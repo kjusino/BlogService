@@ -1,18 +1,18 @@
 version: "3.7"
 services:
-  api_service:
-    build: .
-    restart: always
-    ports:
-      - 8080:8080
-    depends_on:
-      - mysql_db
-    links:
-      - mysql_db:app_db
-    networks:
-      - service_net
-    environment:
-      WAIT_HOSTS: mysql:3306
+#  api_service:
+#    build: .
+#    restart: always
+#    ports:
+#      - 8080:8080
+#    depends_on:
+#      - mysql_db
+#    links:
+#      - mysql_db:app_db
+#    networks:
+#      - service_net
+#    environment:
+#      WAIT_HOSTS: mysql:3306
   mysql_db:
     image: "mysql:8.0"
     restart: always
@@ -20,8 +20,8 @@ services:
       - "3306:3306"
     expose:
       - "3306"
-    networks:
-      - service_net
+#    networks:
+#      - service_net
     environment:
       MYSQL_DATABASE: blog_service_app_db
       MYSQL_ROOT_PASSWORD: root_password
@@ -29,6 +29,6 @@ services:
       MYSQL_USER: kenneth
       MYSQL_PASSWORD: password
 
-networks:
-  service_net:
-    driver: bridge
+#networks:
+#  service_net:
+#    driver: bridge

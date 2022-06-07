@@ -9,8 +9,8 @@ import java.util.List;
 
 @RestController
 public class ApiControllers {
-    @Autowired
-    private BlogRepo blogRepo;
+//    @Autowired
+//    private BlogRepo blogRepo;
 
     @GetMapping(value = "/")
     public String getPage(){
@@ -27,31 +27,31 @@ public class ApiControllers {
         return String.format("Hello %s!", name);
     }
 
-    @GetMapping(value="/blogs")
-    public List<Blog> getBlogs(){
-        return blogRepo.findAll();
-    }
-
-    @PostMapping(value="/saveBlog")
-    public String saveBlog(@RequestBody Blog blog ){
-        blogRepo.save(blog);
-        return "Saved new blog";
-    }
-
-    @PutMapping(value="/updateBlog/{id}")
-    public String updateBlog(@PathVariable long id, @RequestBody Blog blog){
-        Blog updatedBlog = blogRepo.findById(id).get();
-        updatedBlog.setAuthor(blog.getAuthor());
-        updatedBlog.setContent(blog.getContent());
-        updatedBlog.setMetadata(blog.getMetadata());
-        updatedBlog.setTitle(blog.getTitle());
-        blogRepo.save(updatedBlog);
-        return String.format("Updated Blog #%s", id);
-    }
-
-    @DeleteMapping(value="/deleteBlog/{id}")
-    public String deleteBlog(@PathVariable long id) {
-        blogRepo.deleteById(id);
-        return String.format("Deleted Blog #%s", id );
-    }
+//    @GetMapping(value="/blogs")
+//    public List<Blog> getBlogs(){
+//        return blogRepo.findAll();
+//    }
+//
+//    @PostMapping(value="/saveBlog")
+//    public String saveBlog(@RequestBody Blog blog ){
+//        blogRepo.save(blog);
+//        return "Saved new blog";
+//    }
+//
+//    @PutMapping(value="/updateBlog/{id}")
+//    public String updateBlog(@PathVariable long id, @RequestBody Blog blog){
+//        Blog updatedBlog = blogRepo.findById(id).get();
+//        updatedBlog.setAuthor(blog.getAuthor());
+//        updatedBlog.setContent(blog.getContent());
+//        updatedBlog.setMetadata(blog.getMetadata());
+//        updatedBlog.setTitle(blog.getTitle());
+//        blogRepo.save(updatedBlog);
+//        return String.format("Updated Blog #%s", id);
+//    }
+//
+//    @DeleteMapping(value="/deleteBlog/{id}")
+//    public String deleteBlog(@PathVariable long id) {
+//        blogRepo.deleteById(id);
+//        return String.format("Deleted Blog #%s", id );
+//    }
 }
